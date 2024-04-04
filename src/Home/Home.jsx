@@ -1,16 +1,21 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 import "./Home.css"
+
+import basedatos from "../utils/basedatos.json"
+
 
 export function Home(){
 
+    
     //logica para leer la base de datos
-
-
-    return(
+ return(
 
         <>
 
         <div className="banner text-white">
-
+           
             <h3>The barber's masters....</h3>
             <h5>Since 2024</h5>
 
@@ -28,13 +33,35 @@ export function Home(){
                 </div>
                 
             </div>
+            
+            <div className="col-12 text-center">
+                <img src="../../src/assets/corte1.jpg" alt="" className="img-fluid" />
+            </div>
         </section>
+
+        
+        
 
        
         <section className="container">
-            <section className="row-cols-1 row-cols-md-5 g-3">
+            <section className="row row-cols-1 row-cols-md-5 g-4">
                 {
                     //logica para recorrer la BD y mostrar la informacion de los 10 barberos
+                    basedatos.map(function(barbero){
+                        return(
+
+                            <div className="col-3">
+                                <div className="card">
+                                    <p className="fw-bold">{barbero.nombre}</p>
+                                    <p>Especialidad: {barbero.especialidad}</p>
+                                    <p>Experiencia: {barbero.experiencia} años</p>
+                                    <p>Correo: {barbero.correo} </p>
+                                    <p>Experiencia: {barbero.experiencia} años</p>
+                                
+                                </div>
+                            </div>
+                        )
+                    })
                 }
             </section>
         </section>
